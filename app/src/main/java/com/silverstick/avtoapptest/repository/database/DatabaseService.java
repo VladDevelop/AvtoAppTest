@@ -1,13 +1,18 @@
 package com.silverstick.avtoapptest.repository.database;
 
 import android.support.annotation.NonNull;
+import com.silverstick.avtoapptest.models.Channel;
+import com.silverstick.avtoapptest.models.Item;
+import io.reactivex.Flowable;
 
 import java.util.List;
 
 
 public interface DatabaseService {
 //
-//    void saveServiceCenters(@NonNull List<ServiceCentersGroup> serviceCentersGroups);
+    void saveChannels(@NonNull Channel channel);
+
+    Flowable<Channel> getChannels();
 //
 //    void saveShowcaseCarsListRequest(@NonNull GetShowcaseCarsListRequest showcaseCarsListRequest);
 //

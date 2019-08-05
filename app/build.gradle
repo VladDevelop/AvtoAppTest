@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
@@ -21,10 +22,22 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    flavorDimensions 'buildType'
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        dev {
+            dimension 'buildType'
+            buildConfigField "String", "API_BASE_URL", '"https://lenta.ru/"'
         }
     }
 }
@@ -45,7 +58,7 @@ dependencies {
         // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
         exclude module: 'okhttp'
     }
-    implementation "com.squareup.retrofit2:converter-jaxb:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-simplexml:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
@@ -55,6 +68,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid2Version"
     implementation "com.squareup.picasso:picasso:$picassoVersion"
     implementation "android.arch.persistence.room:runtime:$archRoomVersion"
+    kapt "android.arch.persistence.room:compiler:$archRoomVersion"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

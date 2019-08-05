@@ -1,5 +1,6 @@
 package com.silverstick.avtoapptest.models;
 
+
 public class Enclosure {
 
     private String mLength;

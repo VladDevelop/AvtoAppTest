@@ -14,9 +14,8 @@ public final class OkHttpProvider {
     @NonNull
     public static OkHttpClient provideClient() {
         final OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(60, TimeUnit.SECONDS);
-        builder.readTimeout(60, TimeUnit.SECONDS);
-
+        builder.connectTimeout(20, TimeUnit.SECONDS);
+        builder.readTimeout(20, TimeUnit.SECONDS);
         return builder.build();
     }
 

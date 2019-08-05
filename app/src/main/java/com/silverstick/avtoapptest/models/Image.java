@@ -1,5 +1,6 @@
 package com.silverstick.avtoapptest.models;
 
+
 public class Image {
 
     private String mLink;

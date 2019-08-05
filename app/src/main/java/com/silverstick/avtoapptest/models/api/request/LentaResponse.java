@@ -3,7 +3,6 @@ package com.silverstick.avtoapptest.models.api.request;
 import android.arch.persistence.room.Entity;
 import com.silverstick.avtoapptest.models.Rss;
 
-@Entity
 public class LentaResponse {
 
     private Rss rss;

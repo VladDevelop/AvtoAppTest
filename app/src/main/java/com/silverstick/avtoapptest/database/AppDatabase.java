@@ -5,21 +5,15 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import com.silverstick.avtoapptest.models.Channel;
 
 
-
-@Database(entities = {ServiceCenter.class, GetShowcaseCarsListRequest.class, ShowcaseFavoriteCars.class}, version = 1, exportSchema = false)
+@Database(entities = {Channel.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
-
-    //don`t up version database without migration!!! otherwise users will lose data "GetShowcaseCarsListRequest.class" and "ShowcaseFavoriteCars.class"
 
     private static volatile AppDatabase sInstance;
 
-    public abstract ServiceCentersDao serviceCentersDao();
-
-    public abstract ShowcaseCarsListRequestDao showcaseCarsListRequestDao();
-
-    public abstract FavoriteCarsDao favoriteCarsDao();
+    public abstract ChannelDao channelDao();
 
     public static AppDatabase getInstance(@NonNull Context context) {
         if (sInstance == null) {

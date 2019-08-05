@@ -1,15 +1,17 @@
 package com.silverstick.avtoapptest.repository.user;
 
 import android.support.annotation.NonNull;
+import com.silverstick.avtoapptest.models.Rss;
+import com.silverstick.avtoapptest.utils.RxUtils;
+import io.reactivex.Flowable;
 
 
-
-public class UserRepository {
+public class RssRepository {
 
     @NonNull
-    private final UserService mApi;
+    private final RssService mApi;
 
-    public UserRepository(@NonNull UserService api) {
+    public RssRepository(@NonNull RssService api) {
         mApi = api;
     }
 
@@ -30,12 +32,12 @@ public class UserRepository {
 //                .compose(RxUtils.async());
 //    }
 //
-//    @NonNull
-//    public Observable<GetAccessTokenResponse> updateAccessToken(@NonNull String extensionToken) {
-//        return mApi.updateAccessToken(new UpdateAccessTokenRequest(extensionToken))
-//                .compose(RxError.checkOnError())
-//                .compose(RxUtils.async());
-//    }
+    @NonNull
+    public Flowable<Rss> getRss() {
+        return mApi.getRss()
+                .flatMap(Flowable::just)
+                .compose(RxUtils.async());
+    }
 //
 //    @NonNull
 //    public Observable<AddUserNameResponse> addUserName(@NonNull String name,

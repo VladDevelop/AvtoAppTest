@@ -5,13 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.silverstick.avtoapptest.api.ApiFactory;
 import com.silverstick.avtoapptest.repository.database.DatabaseRepository;
-import com.silverstick.avtoapptest.repository.user.UserRepository;
-import com.silverstick.avtoapptest.repository.user.UserService;
+import com.silverstick.avtoapptest.repository.user.RssRepository;
+import com.silverstick.avtoapptest.repository.user.RssService;
 
 public class RepositoryProvider {
 
     @Nullable
-    private static UserRepository sUserRepository;
+    private static RssRepository sRssRepository;
 
     @Nullable
     private static DatabaseRepository sDatabaseRepository;
@@ -26,17 +26,17 @@ public class RepositoryProvider {
     }
 
     @NonNull
-    public static UserRepository provideUserRepository() {
-        if (sUserRepository == null) {
-            sUserRepository = new UserRepository(getServiceInstance(UserService.class));
+    public static RssRepository provideRssRepository() {
+        if (sRssRepository == null) {
+            sRssRepository = new RssRepository(getServiceInstance(RssService.class));
         }
-        return sUserRepository;
+        return sRssRepository;
     }
 
     @NonNull
     public static DatabaseRepository provideDatabaseRepository(@NonNull Context context) {
         if (sDatabaseRepository == null) {
-            sDatabaseRepository = new DatabaseRepository(/*context*/);
+            sDatabaseRepository = new DatabaseRepository(context);
         }
         return sDatabaseRepository;
     }

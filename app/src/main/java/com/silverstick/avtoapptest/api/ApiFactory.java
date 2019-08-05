@@ -2,11 +2,12 @@ package com.silverstick.avtoapptest.api;
 
 import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.silverstick.avtoapptest.BuildConfig;
 import com.silverstick.avtoapptest.repository.OkHttpProvider;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.jaxb.JaxbConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 import java.util.TimeZone;
 
@@ -25,9 +26,9 @@ public class ApiFactory {
             final ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.setTimeZone(TimeZone.getDefault());
             sRetrofit = new Retrofit.Builder()
-                    .baseUrl(/*BuildConfig.API_BASE_URL*/"")
+                    .baseUrl(BuildConfig.API_BASE_URL)
                     .client(provideClient())
-                    .addConverterFactory(JaxbConverterFactory.create())
+                    .addConverterFactory(SimpleXmlConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
