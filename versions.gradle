@@ -7,4 +7,5 @@ ext {
     rxandroid2Version = '2.1.1'
     picassoVersion = '2.71828'
     archRoomVersion = '1.1.1'
+    stethoVersion = '1.5.1'
 }

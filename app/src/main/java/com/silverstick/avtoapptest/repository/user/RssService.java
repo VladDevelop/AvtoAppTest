@@ -2,15 +2,15 @@ package com.silverstick.avtoapptest.repository.user;
 
 
 import com.silverstick.avtoapptest.models.Rss;
+import com.silverstick.avtoapptest.models.api.response.LentaResponse;
 import io.reactivex.Flowable;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 
 
 
 public interface RssService {
 
-    @POST("rss")
+    @GET("rss")
     Flowable<Rss> getRss();
 
 }

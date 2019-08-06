@@ -6,35 +6,44 @@ import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 import com.silverstick.avtoapptest.database.ItemConverter;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
+import org.simpleframework.xml.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Root(name = "channel")
+@Root(name = "channel", strict=false)
 public class Channel {
 
     @PrimaryKey
     @ColumnInfo(name = "item")
-    @Element(name = "item")
+    @Path("channel")
+    @ElementList(name = "item", inline = true/*, required = false*/)
     @TypeConverters(ItemConverter.class)
     @NonNull
     private List<Item> mItem = new ArrayList<>();
 
-//    @ColumnInfo(name = "image")
+//    @Element(name = "image")
+////    @ColumnInfo(name = "image")
 //    private Image mImage;
 
+    @Path("channel")
+    @Element(name = "link")
     @ColumnInfo(name = "link")
     private String mLink;
 
+    @Path("channel")
+    @Element(name = "description")
     @ColumnInfo(name = "description")
     private String mDescription;
 
+    @Path("channel")
+    @Element(name = "language")
     @ColumnInfo(name = "language")
     private String mLanguage;
 
+    @Path("channel")
+    @Element(name = "title")
     @ColumnInfo(name = "title")
     private String mTitle;
 

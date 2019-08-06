@@ -2,6 +2,7 @@ package com.silverstick.avtoapptest.repository.user;
 
 import android.support.annotation.NonNull;
 import com.silverstick.avtoapptest.models.Rss;
+import com.silverstick.avtoapptest.models.api.response.LentaResponse;
 import com.silverstick.avtoapptest.utils.RxUtils;
 import io.reactivex.Flowable;
 

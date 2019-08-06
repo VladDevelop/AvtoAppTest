@@ -1,14 +1,16 @@
 package com.silverstick.avtoapptest.models;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 
-@Root(name = "rss")
+@Root(name = "rss", strict=false)
 public class Rss {
 
     @Element(name = "channel")
     private Channel mChannel;
 
+    @Element(name = "version", required = false)
     private String mVersion;
 
     public Channel getChannel() {

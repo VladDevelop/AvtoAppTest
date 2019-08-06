@@ -1,12 +1,23 @@
 package com.silverstick.avtoapptest.models;
 
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Path;
+import org.simpleframework.xml.Root;
+
+@Root(name = "atom:link", strict = false)
 public class AtomLink {
 
+    @Path("atom:link")
+    @Element(name = "rel")
     private String mRel;
 
+    @Path("atom:link")
+    @Element(name = "href")
     private String mHref;
 
+    @Path("atom:link")
+    @Element(name = "type")
     private String mType;
 
     public String getRel() {

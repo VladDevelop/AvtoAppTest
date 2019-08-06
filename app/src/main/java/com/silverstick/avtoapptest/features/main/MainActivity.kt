@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.Button
 import com.silverstick.avtoapptest.R
 import com.silverstick.avtoapptest.features.main.adapter.MainActivityAdapter
 import com.silverstick.avtoapptest.models.Item
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     lateinit var mRecyclerView: RecyclerView
 
+    lateinit var mButtonStart: Button
+
     lateinit var mAdapter: MainActivityAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +26,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         mPresenter = MainActivityPresenter(this, RepositoryProvider.provideDatabaseRepository(this))
 
         setupViews()
-        mPresenter.dispatchCreate()
+//        mPresenter.dispatchCreate()
     }
 
     override fun onDestroy() {
@@ -43,6 +46,8 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     private fun setupViews() {
+        mButtonStart = findViewById(R.id.btnStart)
+        mButtonStart.setOnClickListener { mPresenter.dispatchCreate() }
         mRecyclerView = findViewById(R.id.recyclerView)
     }
 }
