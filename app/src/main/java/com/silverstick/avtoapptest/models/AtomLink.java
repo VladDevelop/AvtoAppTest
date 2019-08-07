@@ -3,9 +3,7 @@ package com.silverstick.avtoapptest.models;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Path;
-import org.simpleframework.xml.Root;
 
-@Root(name = "atom:link", strict = false)
 public class AtomLink {
 
     @Path("atom:link")

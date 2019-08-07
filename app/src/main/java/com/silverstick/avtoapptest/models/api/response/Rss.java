@@ -1,7 +1,7 @@
-package com.silverstick.avtoapptest.models;
+package com.silverstick.avtoapptest.models.api.response;
 
+import com.silverstick.avtoapptest.models.Channel;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 
 @Root(name = "rss", strict=false)

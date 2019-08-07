@@ -3,8 +3,6 @@ package com.silverstick.avtoapptest.database;
 import android.arch.persistence.room.*;
 import com.silverstick.avtoapptest.models.Channel;
 
-import java.util.List;
-
 @Dao
 public abstract class ChannelDao {
 

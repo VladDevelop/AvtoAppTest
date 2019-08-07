@@ -16,17 +16,13 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     lateinit var mRecyclerView: RecyclerView
 
-    lateinit var mButtonStart: Button
-
-    lateinit var mAdapter: MainActivityAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mPresenter = MainActivityPresenter(this, RepositoryProvider.provideDatabaseRepository(this))
 
         setupViews()
-//        mPresenter.dispatchCreate()
+        mPresenter.dispatchCreate()
     }
 
     override fun onDestroy() {
@@ -46,8 +42,6 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     private fun setupViews() {
-        mButtonStart = findViewById(R.id.btnStart)
-        mButtonStart.setOnClickListener { mPresenter.dispatchCreate() }
         mRecyclerView = findViewById(R.id.recyclerView)
     }
 }

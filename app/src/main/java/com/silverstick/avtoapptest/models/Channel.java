@@ -17,38 +17,35 @@ public class Channel {
 
     @PrimaryKey
     @ColumnInfo(name = "item")
-    @Path("channel")
+//    @Path("channel")
     @ElementList(name = "item", inline = true/*, required = false*/)
     @TypeConverters(ItemConverter.class)
     @NonNull
-    private List<Item> mItem = new ArrayList<>();
+    private List<Item> item = new ArrayList<>();
 
 //    @Element(name = "image")
 ////    @ColumnInfo(name = "image")
 //    private Image mImage;
 
-    @Path("channel")
-    @Element(name = "link")
+    @Path("link")
+    @Text(required = false)
     @ColumnInfo(name = "link")
-    private String mLink;
+    private String link;
 
-    @Path("channel")
     @Element(name = "description")
     @ColumnInfo(name = "description")
-    private String mDescription;
+    private String description;
 
-    @Path("channel")
     @Element(name = "language")
     @ColumnInfo(name = "language")
-    private String mLanguage;
+    private String language;
 
-    @Path("channel")
     @Element(name = "title")
     @ColumnInfo(name = "title")
-    private String mTitle;
+    private String title;
 
     public void setItem(List<Item> item) {
-        mItem = item;
+        this.item = item;
     }
 //
 //    public void setImage(Image image) {
@@ -56,19 +53,19 @@ public class Channel {
 //    }
 
     public void setLink(String link) {
-        mLink = link;
+        this.link = link;
     }
 
     public void setDescription(String description) {
-        mDescription = description;
+        this.description = description;
     }
 
     public void setLanguage(String language) {
-        mLanguage = language;
+        this.language = language;
     }
 
     public void setTitle(String title) {
-        mTitle = title;
+        this.title = title;
     }
 
 //    public Image getImage() {
@@ -76,23 +73,23 @@ public class Channel {
 //    }
 
     public List<Item> getItem() {
-        return mItem;
+        return item;
     }
 
     public String getLink() {
-        return mLink;
+        return link;
     }
 
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
     public String getLanguage() {
-        return mLanguage;
+        return language;
     }
 
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 }
 

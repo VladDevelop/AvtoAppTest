@@ -14,7 +14,6 @@ class MainActivityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun buildForParent(parent: ViewGroup): MainActivityHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.li_titles, parent, false)
-//        setupViews(view)
         return MainActivityHolder(view)
     }
 

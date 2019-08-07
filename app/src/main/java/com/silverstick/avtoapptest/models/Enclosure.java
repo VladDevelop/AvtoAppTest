@@ -1,47 +1,46 @@
 package com.silverstick.avtoapptest.models;
 
 
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Text;
 
 @Root(name = "enclosure", strict=false)
 public class Enclosure {
 
+    @Path("length")
+    @Text(required = false)
+    private String length;
 
-    @Path("enclosure")
-    @Element(name = "length")
-    private String mLength;
+    @Path("type")
+    @Text(required = false)
+    private String type;
 
-    @Path("enclosure")
-    @Element(name = "type")
-    private String mType;
-
-    @Path("enclosure")
-    @Element(name = "url")
-    private String mUrl;
+    @Path("url")
+    @Text(required = false)
+    private String url;
 
     public String getLength() {
-        return mLength;
+        return length;
     }
 
     public void setLength(String length) {
-        mLength = length;
+        this.length = length;
     }
 
     public String getType() {
-        return mType;
+        return type;
     }
 
     public void setType(String type) {
-        mType = type;
+        this.type = type;
     }
 
     public String getUrl() {
-        return mUrl;
+        return url;
     }
 
     public void setUrl(String url) {
-        mUrl = url;
+        this.url = url;
     }
 }

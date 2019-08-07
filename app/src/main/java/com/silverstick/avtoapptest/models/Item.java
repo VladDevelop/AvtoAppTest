@@ -4,40 +4,36 @@ package com.silverstick.avtoapptest.models;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Text;
 
 @Root(name = "item", strict=false)
 public class Item {
 
-    @Path("item")
     @Element(name = "enclosure")
-    private Enclosure mEnclosure;
+    private Enclosure enclosure;
 
     @Path("item")
     @Element(name = "link")
-    private String mLink;
+    private String link;
 
-    @Path("item")
-    @Element(name = "quid")
-    private String mQuid;
+    @Path("quid")
+    @Text(required = false)
+    private String quid;
 
-    @Path("item")
     @Element(name = "description")
-    private String mDescription;
+    private String description;
 
-    @Path("item")
     @Element(name = "title")
-    private String mTitle;
+    private String title;
 
-    @Path("item")
     @Element(name = "category")
-    private String mCategory;
+    private String category;
 
-    @Path("item")
     @Element(name = "pubDate")
-    private String mPubDate;
+    private String pubDate;
 
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
 }

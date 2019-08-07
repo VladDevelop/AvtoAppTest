@@ -1,6 +1,5 @@
 package com.silverstick.avtoapptest.features.main
 
-import com.silverstick.avtoapptest.models.Rss
 import com.silverstick.avtoapptest.repository.RepositoryProvider
 import com.silverstick.avtoapptest.repository.database.DatabaseRepository
 import io.reactivex.disposables.CompositeDisposable
@@ -10,35 +9,25 @@ class MainActivityPresenter(private val mView: MainActivityView, private val mDa
 
     private var mCompositeDisposable = CompositeDisposable()
 
-    private lateinit var mResponse: Rss
-
     fun dispatchCreate() {
 
-//        val disposable: Disposable = mDatabaseRepository.channels
-//            .subscribe { databaseData ->
-//                if (!databaseData.title.isNullOrEmpty()) {
-//                    mView.showTitlesFromDb(databaseData.item)
-//                } else {
-//                    val rssDisposable: Disposable = RepositoryProvider.provideRssRepository()
-//                        .rss
-//                        .doOnNext{ response -> mDatabaseRepository.saveChannels(response.channel) }
-//                        .subscribe{ response -> mView.showTitles(response.channel.item)}
-//                    mCompositeDisposable.add(rssDisposable)
-//                }
-//            }
-
-        //todo rebuild
-        val rssDisposable: Disposable = RepositoryProvider.provideRssRepository()
-            .rss
-//            .doOnNext{ response -> mDatabaseRepository.saveChannels(response.channel) }
-            .subscribe{ response -> {
-                mResponse = response
-                mView.showTitles(response.channel.item)
-            }}
-        mCompositeDisposable.add(rssDisposable)
-
-//        mCompositeDisposable.add(disposable)
-
+        val disposable: Disposable = mDatabaseRepository.channels
+            .subscribe { databaseData ->
+                if (!databaseData.item.isNullOrEmpty()) {
+                    mView.showTitlesFromDb(databaseData.item)
+                } else {
+                    val rssDisposable: Disposable = RepositoryProvider.provideRssRepository()
+                        .rss
+                        .subscribe{ response ->
+                            run {
+                                mDatabaseRepository.saveChannels(response.channel)
+                                mView.showTitles(response.channel.item)
+                            }
+                        }
+                    mCompositeDisposable.add(rssDisposable)
+                }
+            }
+        mCompositeDisposable.add(disposable)
     }
 
     fun closeDisposable() {
